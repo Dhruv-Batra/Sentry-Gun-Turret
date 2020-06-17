@@ -1,3 +1,5 @@
+//Sentry Turret Code by Dhruv Batra
+
 //References
 //https://www.arduino.cc/en/Reference/Servo
 //https://howtomechatronics.com/tutorials/arduino/ultrasonic-sensor-hc-sr04/
@@ -25,7 +27,6 @@ void setup() {
   pinMode(echoPin,INPUT);//set echoPin as input
   Serial.begin(9600); //Starts serial connection
   pan.attach(8);
-  trig.attach(9);
 }
 
 void loop() {
@@ -57,34 +58,34 @@ void loop() {
   Serial.print("Count: ");
   Serial.println(count);
   Serial.println("Flag:");
-  Serial.println(flag);
+  Serial.print(flag);
   Serial.println();
 
 
   //sweep
   if(dist>20 and flag==0)
   {
-    trig.write(90); //make servo speed 0
-    pan.write(45); //speed in one direction 0-90
-    delay(250);
+    pan.write(0); //speed in one direction 0-90
+    delay(200);
     count+=1;
   }else if(dist>20 and flag==1)
   {
-    trig.write(90);
-    pan.write(135);//speed in other direction 90-180
-    delay(250);
+    pan.write(180);//speed in other direction 90-180
+    delay(200);
     count-=1;
   }else if(dist<20){
-    Serial.println("BANG BANG");
+    Serial.println("BANG");
+    trig.attach(9);
     pan.write(90);
-    trig.write(30);
+    trig.write(180);
     delay(1000);
+    trig.detach();
   }
 
   //switch sweep
-  if (count>=5)
+  if (count>=7)
     flag=1;
-  if (count<=-5)
+  if (count<=-7)
     flag=0;   
   
 }
