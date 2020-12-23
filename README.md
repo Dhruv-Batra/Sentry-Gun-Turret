@@ -6,6 +6,7 @@ V_1: Stationary sentry made during winter break of 2020. View version details at
 
 V_1 Sources:
 -https://dronebotworkshop.com/esp32-servo/
+
 -https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/
 -https://randomnerdtutorials.com/getting-started-with-esp32/
 -https://www.instructables.com/Arduino-37-in-1-Sensors-Kit-Explained/
